@@ -223,7 +223,7 @@ export default function Page() {
           <h1
             style={{
               ...styles.hero,
-              letterSpacing: "0.08em",
+              letterSpacing: "0.12em",
               fontSize: "clamp(56px, 9vw, 110px)",
             }}
           >
@@ -232,7 +232,9 @@ export default function Page() {
           <div style={styles.about}>
             Quietly building.
             <br />
-            No Signal. Just execution.
+            No Signal. 
+            <br />
+            Just execution.
           </div>
 
           <div style={styles.gridWrap}>
