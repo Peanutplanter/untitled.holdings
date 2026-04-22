@@ -230,11 +230,11 @@ export default function Page() {
             untitled.holdings
           </h1>
           <div style={styles.about}>
-            Quietly building.
+            quietly building
             <br />
-            No Signal. 
+            no Signal
             <br />
-            Just execution.
+            just execution
           </div>
 
           <div style={styles.gridWrap}>
