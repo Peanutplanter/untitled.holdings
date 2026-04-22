@@ -1,96 +1,112 @@
-function LogoMark({ name }) {
-  const common = {
-    width: "200px",
-    height: "64px",
-    display: "block",
+function Wordmark({ name }) {
+  const wrapStyle = {
+    width: "220px",
+    height: "72px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    color: "currentColor",
   };
 
   if (name === "Vendify") {
     return (
-      <svg viewBox="0 0 320 100" style={common} fill="none">
-        <text
-          x="160"
-          y="64"
-          textAnchor="middle"
-          fill="currentColor"
-          fontSize="44"
-          fontWeight="800"
-          letterSpacing="2"
-        >
-          VENDIFY
-        </text>
-      </svg>
+      <div style={wrapStyle}>
+        <svg viewBox="0 0 320 100" style={{ width: "220px", height: "62px", display: "block" }} fill="none">
+          <text
+            x="160"
+            y="62"
+            textAnchor="middle"
+            fill="currentColor"
+            fontSize="42"
+            fontWeight="700"
+            letterSpacing="4"
+            style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
+          >
+            VENDIFY
+          </text>
+        </svg>
+      </div>
     );
   }
 
   if (name === "LOOT") {
     return (
-      <svg viewBox="0 0 260 90" style={common} fill="none">
-        <text
-          x="130"
-          y="62"
-          textAnchor="middle"
-          fill="currentColor"
-          fontSize="58"
-          fontWeight="600"
-        >
-          LOOT
-        </text>
-      </svg>
+      <div style={wrapStyle}>
+        <svg viewBox="0 0 320 100" style={{ width: "220px", height: "62px", display: "block" }} fill="none">
+          <g fill="currentColor">
+            <text
+              x="160"
+              y="64"
+              textAnchor="middle"
+              fontSize="54"
+              fontWeight="700"
+              letterSpacing="2"
+              style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
+            >
+              LOOT
+            </text>
+          </g>
+        </svg>
+      </div>
     );
   }
 
   if (name === "Ingles de Colores") {
     return (
-      <svg viewBox="0 0 260 100" style={common} fill="none">
-        <text
-          x="130"
-          y="48"
-          textAnchor="middle"
-          fill="currentColor"
-          fontSize="24"
-          fontWeight="700"
-          letterSpacing="3"
-        >
-          INGLES DE
-        </text>
-        <text
-          x="130"
-          y="78"
-          textAnchor="middle"
-          fill="currentColor"
-          fontSize="24"
-          fontWeight="700"
-          letterSpacing="3"
-        >
-          COLORES
-        </text>
-      </svg>
+      <div style={wrapStyle}>
+        <svg viewBox="0 0 320 110" style={{ width: "220px", height: "68px", display: "block" }} fill="none">
+          <text
+            x="160"
+            y="42"
+            textAnchor="middle"
+            fill="currentColor"
+            fontSize="20"
+            fontWeight="700"
+            letterSpacing="5"
+            style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
+          >
+            INGLES DE
+          </text>
+          <text
+            x="160"
+            y="74"
+            textAnchor="middle"
+            fill="currentColor"
+            fontSize="20"
+            fontWeight="700"
+            letterSpacing="5"
+            style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
+          >
+            COLORES
+          </text>
+        </svg>
+      </div>
     );
   }
 
   return (
-    <svg viewBox="0 0 320 100" style={common} fill="none">
-      <text
-        x="160"
-        y="64"
-        textAnchor="middle"
-        fill="currentColor"
-        fontSize="42"
-        fontWeight="600"
-        letterSpacing="1"
-      >
-        CoffeeTAB
-      </text>
-    </svg>
+    <div style={wrapStyle}>
+      <svg viewBox="0 0 320 100" style={{ width: "220px", height: "58px", display: "block" }} fill="none">
+        <text
+          x="160"
+          y="62"
+          textAnchor="middle"
+          fill="currentColor"
+          fontSize="40"
+          fontWeight="500"
+          letterSpacing="1"
+          style={{ fontFamily: '"Times New Roman", Georgia, serif', fontStyle: "italic" }}
+        >
+          CoffeeTAB
+        </text>
+      </svg>
+    </div>
   );
 }
 
 function CompanyCard({ company, index }) {
-  const borderRight =
-    index % 2 === 0 ? "1px solid rgba(255,255,255,0.08)" : "none";
-  const borderBottom =
-    index < 2 ? "1px solid rgba(255,255,255,0.08)" : "none";
+  const borderRight = index % 2 === 0 ? "1px solid rgba(255,255,255,0.08)" : "none";
+  const borderBottom = index < 2 ? "1px solid rgba(255,255,255,0.08)" : "none";
 
   return (
     <a
@@ -98,22 +114,21 @@ function CompanyCard({ company, index }) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={company.name}
+      className="company-card fade-up"
       style={{
-        height: "176px",
+        height: "188px",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        color: "rgba(255,255,255,0.82)",
+        color: "rgba(255,255,255,0.86)",
         textDecoration: "none",
-        background: "transparent",
         borderRight,
         borderBottom,
-        transition: "background 0.2s ease, color 0.2s ease",
         position: "relative",
         zIndex: 2,
       }}
     >
-      <LogoMark name={company.name} />
+      <Wordmark name={company.name} />
     </a>
   );
 }
@@ -129,14 +144,14 @@ export default function Page() {
   const styles = {
     page: {
       minHeight: "100vh",
-      background: "#000",
-      color: "#fff",
+      background: "#000000",
+      color: "#ffffff",
       padding: "80px 24px",
-      fontFamily: 'Georgia, "Times New Roman", serif',
+      fontFamily: 'Inter, Arial, Helvetica, sans-serif',
     },
     wrap: {
       minHeight: "100vh",
-      maxWidth: "1100px",
+      maxWidth: "1120px",
       margin: "0 auto",
       display: "flex",
       flexDirection: "column",
@@ -145,26 +160,30 @@ export default function Page() {
     },
     hero: {
       textAlign: "center",
-      fontSize: "clamp(64px, 10vw, 128px)",
-      lineHeight: 0.92,
-      letterSpacing: "-0.06em",
+      fontSize: "clamp(42px, 7vw, 88px)",
+      lineHeight: 1,
+      letterSpacing: "0.12em",
       margin: 0,
       fontWeight: 400,
+      textTransform: "lowercase",
+      fontFamily: '"Times New Roman", Georgia, serif',
+      color: "rgba(255,255,255,0.96)",
     },
     about: {
-      marginTop: "64px",
+      marginTop: "52px",
       textAlign: "center",
-      fontSize: "28px",
-      lineHeight: 1.4,
-      color: "rgba(255,255,255,0.6)",
-      fontFamily: 'Georgia, "Times New Roman", serif',
+      fontSize: "22px",
+      lineHeight: 1.55,
+      color: "rgba(255,255,255,0.56)",
+      fontFamily: '"Times New Roman", Georgia, serif',
     },
     gridWrap: {
-      marginTop: "80px",
+      marginTop: "78px",
       width: "100%",
-      maxWidth: "900px",
+      maxWidth: "920px",
       position: "relative",
       border: "1px solid rgba(255,255,255,0.08)",
+      background: "rgba(255,255,255,0.01)",
     },
     grid: {
       display: "grid",
@@ -178,7 +197,7 @@ export default function Page() {
       left: 0,
       right: 0,
       height: "1px",
-      background: "rgba(255,255,255,0.06)",
+      background: "rgba(255,255,255,0.05)",
       transform: "translateY(-0.5px)",
       zIndex: 1,
       pointerEvents: "none",
@@ -189,66 +208,112 @@ export default function Page() {
       top: 0,
       bottom: 0,
       width: "1px",
-      background: "rgba(255,255,255,0.06)",
+      background: "rgba(255,255,255,0.05)",
       transform: "translateX(-0.5px)",
       zIndex: 1,
       pointerEvents: "none",
     },
     emailWrap: {
-      marginTop: "80px",
+      marginTop: "72px",
       textAlign: "center",
     },
     email: {
-      color: "rgba(255,255,255,0.7)",
+      color: "rgba(255,255,255,0.68)",
       textDecoration: "none",
-      fontSize: "20px",
-      fontFamily: 'Georgia, "Times New Roman", serif',
+      fontSize: "18px",
+      letterSpacing: "0.02em",
+      fontFamily: 'Inter, Arial, Helvetica, sans-serif',
     },
   };
 
   return (
     <>
       <style>{`
-        a[aria-label]:hover {
-          background: rgba(255,255,255,0.03) !important;
-          color: #ffffff !important;
+        @keyframes fadeUp {
+          from {
+            opacity: 0;
+            transform: translateY(16px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
+
+        .fade-up {
+          opacity: 0;
+          animation: fadeUp 900ms ease forwards;
+        }
+
+        .fade-delay-1 { animation-delay: 120ms; }
+        .fade-delay-2 { animation-delay: 240ms; }
+        .fade-delay-3 { animation-delay: 360ms; }
+
+        .company-card {
+          transition:
+            background 220ms ease,
+            color 220ms ease,
+            transform 220ms ease;
+        }
+
+        .company-card:hover {
+          background: rgba(255,255,255,0.03);
+          color: #ffffff;
+          transform: translateY(-1px);
+        }
+
+        .email-link {
+          transition: color 220ms ease, opacity 220ms ease;
+        }
+
         .email-link:hover {
           color: #ffffff !important;
+        }
+
+        @media (max-width: 700px) {
+          .portfolio-grid {
+            grid-template-columns: 1fr !important;
+          }
+
+          .portfolio-grid .company-card {
+            border-right: none !important;
+            border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+          }
+
+          .portfolio-grid .company-card:last-child {
+            border-bottom: none !important;
+          }
+
+          .grid-cross {
+            display: none !important;
+          }
         }
       `}</style>
 
       <div style={styles.page}>
         <div style={styles.wrap}>
-          <h1
-            style={{
-              ...styles.hero,
-              letterSpacing: "0.12em",
-              fontSize: "clamp(56px, 9vw, 110px)",
-            }}
-          >
+          <h1 style={styles.hero} className="fade-up">
             untitled.holdings
           </h1>
-          <div style={styles.about}>
-            quietly building
+
+          <div style={styles.about} className="fade-up fade-delay-1">
+            Quietly building.
             <br />
-            no signal
-            <br />
-            just execution
+            No Signal. Just execution.
           </div>
 
-          <div style={styles.gridWrap}>
-            <div style={styles.crossHorizontal} />
-            <div style={styles.crossVertical} />
+          <div style={styles.gridWrap} className="fade-up fade-delay-2">
+            <div style={styles.crossHorizontal} className="grid-cross" />
+            <div style={styles.crossVertical} className="grid-cross" />
 
-            <div style={styles.grid}>
+            <div style={styles.grid} className="portfolio-grid">
               {companies.map((company, index) => (
                 <CompanyCard key={company.name} company={company} index={index} />
               ))}
             </div>
           </div>
 
-          <div style={styles.emailWrap}>
+          <div style={styles.emailWrap} className="fade-up fade-delay-3">
             <a
               href="mailto:hello@untitled.holdings"
               className="email-link"
