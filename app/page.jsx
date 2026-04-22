@@ -232,7 +232,7 @@ export default function Page() {
           <div style={styles.about}>
             quietly building
             <br />
-            no Signal
+            no signal
             <br />
             just execution
           </div>
