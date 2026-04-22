@@ -220,12 +220,15 @@ export default function Page() {
 
       <div style={styles.page}>
         <div style={styles.wrap}>
-          <h1 style={styles.hero}>
-            Untitled
-            <br />
-            Holdings
+          <h1
+            style={{
+              ...styles.hero,
+              letterSpacing: "0.08em",
+              fontSize: "clamp(56px, 9vw, 110px)",
+            }}
+          >
+            untitled.holdings
           </h1>
-
           <div style={styles.about}>
             Quietly building.
             <br />
