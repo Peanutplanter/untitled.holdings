@@ -1,10 +1,26 @@
+"use client";
+
+import { useState } from "react";
+
 function LogoMark({ name }) {
-  const baseSvgStyle = { width: "220px", height: "64px", display: "block" };
+  const baseSvgStyle = {
+    width: "220px",
+    height: "64px",
+    display: "block",
+  };
 
   if (name === "Vendify") {
     return (
       <svg viewBox="0 0 320 100" style={baseSvgStyle} fill="none">
-        <text x="160" y="64" textAnchor="middle" fill="currentColor" fontSize="42" fontWeight="700" letterSpacing="2">
+        <text
+          x="160"
+          y="64"
+          textAnchor="middle"
+          fill="currentColor"
+          fontSize="42"
+          fontWeight="700"
+          letterSpacing="2"
+        >
           VENDIFY
         </text>
       </svg>
@@ -14,7 +30,14 @@ function LogoMark({ name }) {
   if (name === "LOOT") {
     return (
       <svg viewBox="0 0 260 90" style={baseSvgStyle} fill="none">
-        <text x="130" y="62" textAnchor="middle" fill="currentColor" fontSize="64" fontWeight="700">
+        <text
+          x="130"
+          y="62"
+          textAnchor="middle"
+          fill="currentColor"
+          fontSize="64"
+          fontWeight="700"
+        >
           LOOT
         </text>
       </svg>
@@ -24,10 +47,26 @@ function LogoMark({ name }) {
   if (name === "Ingles de Colores") {
     return (
       <svg viewBox="0 0 260 100" style={baseSvgStyle} fill="none">
-        <text x="130" y="48" textAnchor="middle" fill="currentColor" fontSize="20" fontWeight="700" letterSpacing="2">
+        <text
+          x="130"
+          y="48"
+          textAnchor="middle"
+          fill="currentColor"
+          fontSize="20"
+          fontWeight="700"
+          letterSpacing="2"
+        >
           INGLÉS DE
         </text>
-        <text x="130" y="78" textAnchor="middle" fill="currentColor" fontSize="20" fontWeight="700" letterSpacing="2">
+        <text
+          x="130"
+          y="78"
+          textAnchor="middle"
+          fill="currentColor"
+          fontSize="20"
+          fontWeight="700"
+          letterSpacing="2"
+        >
           COLORES
         </text>
       </svg>
@@ -35,11 +74,56 @@ function LogoMark({ name }) {
   }
 
   return (
-    <svg viewBox="0 0 320 100" style={{ width: "220px", height: "56px", display: "block" }} fill="none">
-      <text x="160" y="64" textAnchor="middle" fill="currentColor" fontSize="38" fontWeight="400">
+    <svg
+      viewBox="0 0 320 100"
+      style={{ width: "220px", height: "56px", display: "block" }}
+      fill="none"
+    >
+      <text
+        x="160"
+        y="64"
+        textAnchor="middle"
+        fill="currentColor"
+        fontSize="38"
+        fontWeight="400"
+      >
         CoffeeTAB
       </text>
     </svg>
+  );
+}
+
+function CompanyCard({ company, index }) {
+  const [hovered, setHovered] = useState(false);
+
+  const borderRight = index % 2 === 0 ? "1px solid rgba(255,255,255,0.08)" : "none";
+  const borderBottom = index < 2 ? "1px solid rgba(255,255,255,0.08)" : "none";
+
+  return (
+    <a
+      href={company.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={company.name}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        height: "176px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        color: hovered ? "#ffffff" : "rgba(255,255,255,0.82)",
+        textDecoration: "none",
+        background: hovered ? "rgba(255,255,255,0.03)" : "transparent",
+        borderRight,
+        borderBottom,
+        transition: "background 0.2s ease, color 0.2s ease",
+        position: "relative",
+        zIndex: 2,
+      }}
+    >
+      <LogoMark name={company.name} />
+    </a>
   );
 }
 
@@ -72,7 +156,7 @@ export default function Page() {
       textAlign: "center",
       fontSize: "clamp(64px, 10vw, 128px)",
       lineHeight: 0.92,
-      letterSpacing: "-0.04em",
+      letterSpacing: "-0.06em",
       margin: 0,
       fontWeight: 400,
     },
@@ -84,22 +168,40 @@ export default function Page() {
       color: "rgba(255,255,255,0.6)",
       fontFamily: 'Georgia, "Times New Roman", serif',
     },
-    grid: {
+    gridWrap: {
       marginTop: "80px",
       width: "100%",
       maxWidth: "900px",
+      position: "relative",
+      border: "1px solid rgba(255,255,255,0.08)",
+    },
+    grid: {
       display: "grid",
       gridTemplateColumns: "1fr 1fr",
-      border: "1px solid rgba(255,255,255,0.1)",
+      position: "relative",
+      zIndex: 2,
     },
-    card: {
-      height: "176px",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      color: "rgba(255,255,255,0.82)",
-      textDecoration: "none",
-      transition: "background 0.2s ease, color 0.2s ease",
+    crossHorizontal: {
+      position: "absolute",
+      top: "50%",
+      left: 0,
+      right: 0,
+      height: "1px",
+      background: "rgba(255,255,255,0.06)",
+      transform: "translateY(-0.5px)",
+      zIndex: 1,
+      pointerEvents: "none",
+    },
+    crossVertical: {
+      position: "absolute",
+      left: "50%",
+      top: 0,
+      bottom: 0,
+      width: "1px",
+      background: "rgba(255,255,255,0.06)",
+      transform: "translateX(-0.5px)",
+      zIndex: 1,
+      pointerEvents: "none",
     },
     emailWrap: {
       marginTop: "80px",
@@ -110,6 +212,7 @@ export default function Page() {
       textDecoration: "none",
       fontSize: "20px",
       fontFamily: 'Georgia, "Times New Roman", serif',
+      transition: "color 0.2s ease",
     },
   };
 
@@ -128,32 +231,28 @@ export default function Page() {
           No Signal. Just execution.
         </div>
 
-        <div style={styles.grid}>
-          {companies.map((company, index) => {
-            const borderRight = index % 2 === 0 ? "1px solid rgba(255,255,255,0.1)" : "none";
-            const borderBottom = index < 2 ? "1px solid rgba(255,255,255,0.1)" : "none";
+        <div style={styles.gridWrap}>
+          <div style={styles.crossHorizontal} />
+          <div style={styles.crossVertical} />
 
-            return (
-              <a
-                key={company.name}
-                href={company.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={company.name}
-                style={{
-                  ...styles.card,
-                  borderRight,
-                  borderBottom,
-                }}
-              >
-                <LogoMark name={company.name} />
-              </a>
-            );
-          })}
+          <div style={styles.grid}>
+            {companies.map((company, index) => (
+              <CompanyCard key={company.name} company={company} index={index} />
+            ))}
+          </div>
         </div>
 
         <div style={styles.emailWrap}>
-          <a href="mailto:hello@untitled.holdings" style={styles.email}>
+          <a
+            href="mailto:hello@untitled.holdings"
+            style={styles.email}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.color = "#ffffff";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.color = "rgba(255,255,255,0.7)";
+            }}
+          >
             hello@untitled.holdings
           </a>
         </div>
